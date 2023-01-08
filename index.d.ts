@@ -1,6 +1,6 @@
 import * as http from 'http'
 import * as https from 'https'
-import { URL } from 'url'
+import {URL} from 'url'
 
 declare class HttpProxyAgent extends http.Agent {
   constructor(options: HttpProxyAgentOptions)
@@ -13,6 +13,12 @@ interface HttpProxyAgentOptions extends http.AgentOptions {
 
 declare class HttpsProxyAgent extends https.Agent {
   constructor(options: HttpsProxyAgentOptions)
+}
+
+declare class HttpAgentError extends Error {
+  proxy: string
+  
+  constructor(message: string, proxy: string)
 }
 
 interface HttpsProxyAgentOptions extends https.AgentOptions {
@@ -32,4 +38,5 @@ export {
   HttpsProxyAgent,
   HttpsProxyAgentOptions,
   ProxyAgentRequestOptions,
+  HttpAgentError,
 }
